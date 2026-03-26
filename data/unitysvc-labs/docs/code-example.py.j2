@@ -1,12 +1,28 @@
 import boto3
+{% if local_testing %}
+from botocore import UNSIGNED
+from botocore.config import Config
 
+# Local testing: access public S3 bucket directly (no authentication needed)
 s3 = boto3.client('s3',
-    endpoint_url='{{ S3_GATEWAY_PUBLIC_URL }}',
-    aws_access_key_id='{{ API_KEY }}',
+    region_name='{{ offering.upstream_access_config["AWS Public S3"].region }}',
+    config=Config(signature_version=UNSIGNED),
+)
+bucket = '{{ offering.upstream_access_config["AWS Public S3"].bucket }}'
+{% else %}
+import os
+
+# Access via UnitySVC S3 gateway
+s3 = boto3.client('s3',
+    endpoint_url=os.environ['SERVICE_BASE_URL'],
+    aws_access_key_id=os.environ['UNITYSVC_API_KEY'],
     aws_secret_access_key='not-used',
 )
+bucket = '{{ offering.name }}'
+{% endif %}
 
 # List files in the bucket
-response = s3.list_objects_v2(Bucket='{{ SERVICE_NAME }}', MaxKeys=5)
+response = s3.list_objects_v2(Bucket=bucket, MaxKeys=5)
 for obj in response.get('Contents', []):
     print(f"{obj['Key']}  ({obj['Size']} bytes)")
+print("connectivity ok")

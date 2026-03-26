@@ -1,4 +1,12 @@
 #!/bin/bash
-# Connectivity test for the S3 gateway endpoint
+{% if local_testing %}
+# Local testing: verify public S3 bucket is reachable
+curl -s -o /dev/null -w "%{http_code}" \
+    "https://{{ offering.upstream_access_config["AWS Public S3"].bucket }}.s3.{{ offering.upstream_access_config["AWS Public S3"].region }}.amazonaws.com/" \
+    | grep -q "200\|403" && echo "connectivity ok"
+{% else %}
+# Verify S3 gateway endpoint is reachable
 curl -s -o /dev/null -w "%{http_code}" "$SERVICE_BASE_URL/" \
-  -H "Authorization: Bearer $UNITYSVC_API_KEY" | grep -q "200\|403\|404" && echo "connectivity ok"
+    -H "Authorization: Bearer $UNITYSVC_API_KEY" \
+    | grep -q "200\|403\|404" && echo "connectivity ok"
+{% endif %}

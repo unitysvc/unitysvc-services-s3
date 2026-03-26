@@ -7,7 +7,7 @@
   "list_price": {
     "type": "constant",
     "price": "0",
-    "description": "Free — public dataset"
+    "description": "Free \u2014 public dataset"
   },
   "user_access_interfaces": {
     "S3 Gateway": {
@@ -31,8 +31,10 @@
       "is_active": true,
       "is_public": true,
       "meta": {
-        "requirements": ["boto3"],
-        "skip_test": true
+        "requirements": [
+          "boto3"
+        ],
+        "output_contains": "connectivity ok"
       },
       "mime_type": "python"
     },
@@ -43,7 +45,7 @@
       "is_active": true,
       "is_public": true,
       "meta": {
-        "skip_test": true
+        "output_contains": "connectivity ok"
       },
       "mime_type": "bash"
     },
@@ -61,7 +63,7 @@
       "is_active": true,
       "is_public": false,
       "meta": {
-        "skip_test": true
+        "output_contains": "connectivity ok"
       },
       "mime_type": "bash"
     }
