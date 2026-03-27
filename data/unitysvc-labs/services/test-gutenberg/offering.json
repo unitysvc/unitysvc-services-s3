@@ -24,10 +24,10 @@
   "upstream_access_config": {
     "DigitalOcean Spaces": {
       "access_method": "http",
-      "base_url": "https://unitysvc-assets.nyc3.digitaloceanspaces.com",
+      "base_url": "https://unitysvc-assets.sfo3.digitaloceanspaces.com",
       "storage_type": "s3",
       "bucket": "unitysvc-assets",
-      "region": "nyc3",
+      "region": "sfo3",
       "base_path": "s3-gateway-test/",
       "access_key": "${ secrets.DO_SPACES_ACCESS_KEY }",
       "secret_key": "${ secrets.DO_SPACES_SECRET_KEY }"
