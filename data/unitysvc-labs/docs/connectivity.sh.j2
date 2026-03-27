@@ -4,12 +4,12 @@
 # Local testing: verify S3-compatible endpoint is reachable
 curl -s -o /dev/null -w "%{http_code}" \
     "{{ interface.s3_endpoint }}" \
-    | grep -q "200\|403\|301" && echo "connectivity ok"
+    | grep -q "200\|301\|403" && echo "connectivity ok"
 {% else %}
-# Local testing: verify public S3 bucket is reachable
+# Local testing: verify S3 bucket endpoint is reachable
 curl -s -o /dev/null -w "%{http_code}" \
     "https://{{ interface.bucket }}.s3.{{ interface.region }}.amazonaws.com/" \
-    | grep -q "200\|403" && echo "connectivity ok"
+    | grep -q "200\|301\|307\|403" && echo "connectivity ok"
 {% endif %}
 {% else %}
 # Verify S3 gateway endpoint is reachable (any HTTP response means gateway is up)

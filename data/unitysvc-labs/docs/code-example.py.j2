@@ -3,13 +3,15 @@ import os
 {% if local_testing %}
 {% if interface.get("access_key") %}
 # Local testing: access S3 with seller credentials
-# Environment variables are set by usvc data run-tests from upstream_access_config
-s3 = boto3.client('s3',
-    endpoint_url=os.environ['S3_ENDPOINT'],
-    region_name=os.environ['REGION'],
-    aws_access_key_id=os.environ['ACCESS_KEY'],
-    aws_secret_access_key=os.environ['SECRET_KEY'],
-)
+s3_kwargs = {
+    'region_name': os.environ['REGION'],
+    'aws_access_key_id': os.environ['ACCESS_KEY'],
+    'aws_secret_access_key': os.environ['SECRET_KEY'],
+}
+# Use S3_ENDPOINT for non-AWS endpoints (DigitalOcean Spaces, MinIO, etc.)
+if os.environ.get('S3_ENDPOINT'):
+    s3_kwargs['endpoint_url'] = os.environ['S3_ENDPOINT']
+s3 = boto3.client('s3', **s3_kwargs)
 {% else %}
 from botocore import UNSIGNED
 from botocore.config import Config
