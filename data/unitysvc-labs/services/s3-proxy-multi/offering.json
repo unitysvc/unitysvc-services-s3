@@ -1,0 +1,33 @@
+{
+  "name": "s3-proxy-multi",
+  "schema": "offering_v1",
+  "service_type": "misc",
+  "status": "ready",
+  "time_created": "2026-04-13T00:00:00Z",
+  "description": "Multi-enrollment S3 proxy. Each enrollment connects to a different upstream S3-compatible bucket. The gateway proxies all bytes, keeping the upstream endpoint hidden from clients. Billed per GB transferred.",
+  "tags": [
+    "byoe",
+    "gateway",
+    "s3"
+  ],
+  "capabilities": [
+    "s3_proxy"
+  ],
+  "payout_price": {
+    "description": "No platform commission — customer uses own storage",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "upstream_access_config": {
+    "S3 Proxy": {
+      "access_method": "http",
+      "storage_type": "s3",
+      "proxy_mode": "proxy",
+      "s3_endpoint": "{{ params.s3_endpoint }}",
+      "bucket": "{{ params.bucket }}",
+      "region": "{{ params.region }}",
+      "access_key": "${ customer_secrets.{{ params.access_key_secret }} }",
+      "secret_key": "${ customer_secrets.{{ params.secret_key_secret }} }"
+    }
+  }
+}

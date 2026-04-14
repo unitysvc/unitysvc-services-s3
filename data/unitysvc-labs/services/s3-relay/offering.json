@@ -1,0 +1,33 @@
+{
+  "name": "s3-relay",
+  "schema": "offering_v1",
+  "service_type": "misc",
+  "status": "ready",
+  "time_created": "2026-04-13T00:00:00Z",
+  "description": "Bring Your Own Bucket S3 relay. Connect your own S3-compatible storage and serve objects through the UnitySVC gateway. The gateway returns presigned redirect URLs — clients download directly from your upstream bucket.",
+  "tags": [
+    "byoe",
+    "gateway",
+    "s3"
+  ],
+  "capabilities": [
+    "s3_relay"
+  ],
+  "payout_price": {
+    "description": "No platform commission — customer uses own storage",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "upstream_access_config": {
+    "S3 Relay": {
+      "access_method": "http",
+      "storage_type": "s3",
+      "proxy_mode": "redirect",
+      "s3_endpoint": "${ customer_secrets.S3_RELAY_ENDPOINT }",
+      "bucket": "${ customer_secrets.S3_RELAY_BUCKET }",
+      "region": "${ customer_secrets.S3_RELAY_REGION }",
+      "access_key": "${ customer_secrets.S3_RELAY_ACCESS_KEY }",
+      "secret_key": "${ customer_secrets.S3_RELAY_SECRET_KEY }"
+    }
+  }
+}
