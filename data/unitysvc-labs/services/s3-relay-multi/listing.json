@@ -29,9 +29,7 @@
       "is_public": true,
       "meta": {
         "output_contains": "connectivity ok",
-        "requirements": [
-          "boto3"
-        ]
+        "requirements": ["boto3"]
       },
       "mime_type": "python"
     }
@@ -44,7 +42,7 @@
   "schema": "listing_v1",
   "service_options": {
     "ops_testing_parameters": {
-      "s3_endpoint": "https://s3.staging.svcmarket.com",
+      "s3_endpoint": "https://s3.svcmarket.com",
       "bucket": "test-relay-multi",
       "region": "us-east-1",
       "access_key_secret": "MINIO_TEST_ACCESS_KEY",
@@ -86,6 +84,12 @@
         "description": "Name of the customer secret containing the S3 secret access key"
       }
     },
-    "required": ["s3_endpoint", "bucket", "region", "access_key_secret", "secret_key_secret"]
+    "required": [
+      "s3_endpoint",
+      "bucket",
+      "region",
+      "access_key_secret",
+      "secret_key_secret"
+    ]
   }
 }
