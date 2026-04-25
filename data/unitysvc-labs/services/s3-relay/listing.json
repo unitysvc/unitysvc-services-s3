@@ -29,13 +29,15 @@
       "is_public": true,
       "meta": {
         "output_contains": "connectivity ok",
-        "requirements": ["boto3"]
+        "requirements": [
+          "boto3"
+        ]
       },
       "mime_type": "python"
     }
   },
   "list_price": {
-    "description": "Free — customer provides own storage",
+    "description": "Free \u2014 customer provides own storage",
     "price": "0",
     "type": "constant"
   },
@@ -52,7 +54,7 @@
   "status": "ready",
   "time_created": "2026-04-13T00:00:00Z",
   "user_access_interfaces": {
-    "S3 Gateway": {
+    "s3_gateway": {
       "access_method": "http",
       "base_url": "${S3_GATEWAY_BASE_URL}/s3-relay"
     }

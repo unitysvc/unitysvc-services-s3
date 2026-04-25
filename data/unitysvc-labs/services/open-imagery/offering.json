@@ -24,7 +24,7 @@
     "type": "revenue_share"
   },
   "upstream_access_config": {
-    "AWS Public S3": {
+    "aws_public_s3": {
       "access_method": "http",
       "base_url": "https://spacenet-dataset.s3.amazonaws.com",
       "storage_type": "s3",

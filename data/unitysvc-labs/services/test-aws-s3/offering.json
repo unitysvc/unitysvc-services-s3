@@ -15,12 +15,12 @@
     "s3_download"
   ],
   "payout_price": {
-    "description": "Free public domain content — no payout",
+    "description": "Free public domain content \u2014 no payout",
     "percentage": "0",
     "type": "revenue_share"
   },
   "upstream_access_config": {
-    "AWS S3": {
+    "aws_s3": {
       "access_method": "http",
       "storage_type": "s3",
       "bucket": "unitysvc-assets",

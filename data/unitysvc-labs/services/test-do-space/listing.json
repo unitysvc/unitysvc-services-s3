@@ -10,7 +10,7 @@
     "description": "1c per file"
   },
   "user_access_interfaces": {
-    "S3 Gateway": {
+    "s3_gateway": {
       "access_method": "http",
       "base_url": "${S3_GATEWAY_BASE_URL}/test-do-space"
     }

@@ -16,12 +16,12 @@
     "s3_download"
   ],
   "payout_price": {
-    "description": "Free public domain content — no payout",
+    "description": "Free public domain content \u2014 no payout",
     "percentage": "0",
     "type": "revenue_share"
   },
   "upstream_access_config": {
-    "DigitalOcean Spaces": {
+    "digitalocean_spaces": {
       "access_method": "http",
       "storage_type": "s3",
       "s3_endpoint": "https://sfo3.digitaloceanspaces.com",
