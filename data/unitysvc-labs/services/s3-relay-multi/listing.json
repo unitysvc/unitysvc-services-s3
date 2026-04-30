@@ -38,6 +38,9 @@
   },
   "schema": "listing_v1",
   "service_options": {
+    "enrollment_vars": {
+      "code": "{{ enrollment_code(6) }}"
+    },
     "ops_testing_parameters": {
       "s3_endpoint": "https://s3.svcmarket.com",
       "bucket": "test-relay-multi",
