@@ -24,9 +24,7 @@
       "is_public": true,
       "meta": {
         "output_contains": "connectivity ok",
-        "requirements": [
-          "boto3"
-        ]
+        "requirements": ["boto3"]
       },
       "mime_type": "python"
     }
@@ -42,11 +40,11 @@
       "code": "{{ enrollment_code(6) }}"
     },
     "ops_testing_parameters": {
-      "access_key_secret": "S3_ACCESS_KEY",
+      "access_key_secret": "S3_RELAY_ACCESS_KEY",
       "bucket": "demo",
       "region": "us-east-1",
       "s3_endpoint": "https://s3.svcmarket.com",
-      "secret_key_secret": "S3_SECRET_KEY"
+      "secret_key_secret": "S3_RELAY_SECRET_KEY"
     }
   },
   "status": "ready",
@@ -54,10 +52,7 @@
   "user_access_interfaces": {
     "s3_gateway": {
       "access_method": "http",
-      "base_url": "${S3_GATEWAY_BASE_URL}",
-      "routing_key": {
-        "username": "{{ enrollment_vars.code }}"
-      }
+      "base_url": "${S3_GATEWAY_BASE_URL}/{{ enrollment_vars.code }}"
     }
   },
   "user_parameters_schema": {
